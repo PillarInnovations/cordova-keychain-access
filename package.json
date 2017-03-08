@@ -1,0 +1,25 @@
+{
+  "name": "SwiftKeychain",
+  "version": "0.0.1",
+  "description": "A Keychain plugin for iOS written using swift library",
+  "cordova": {
+    "id": "com-pillarinnovations-plugins-swiftkeychain",
+    "platforms": [
+      "ios"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkeczan/swift-keychain.git"
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios"
+  ],
+  "author": "Jeremy Keczan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jkeczan/swift-keychain/issues"
+  },
+  "homepage": "https://github.com/jkeczan/swift-keychain#readme"
+}

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="com-pillarinnovations-plugins-swiftkeychain" version="0.0.1"
+        xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>SwiftKeychain</name>
+    <js-module name="SwiftKeychain" src="www/SwiftKeychain.js">
+        <clobbers target="cordova.plugins.SwiftKeychain"/>
+    </js-module>
+    <platform name="ios">
+        <config-file parent="/*" target="config.xml">
+            <feature name="SwiftKeychain">
+                <param name="ios-package" value="SwiftKeychain"/>
+            </feature>
+        </config-file>
+        <source-file src="src/ios/SwiftKeychain.swift"/>
+    </platform>
+</plugin>
