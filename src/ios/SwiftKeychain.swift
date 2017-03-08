@@ -10,11 +10,11 @@ func echo(command: CDVInvokedUrlCommand) {
 if msg.characters.count > 0 {
  pluginResult = CDVPluginResult(
    status: CDVCommandStatus_OK,
- messageAs: msg
+ messageAsString: msg
  )
 }
 
-self.commandDelegate!.send(
+self.commandDelegate!.sendPluginResult(
   pluginResult,
 callbackId: command.callbackId
 )
