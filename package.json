@@ -10,16 +10,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jkeczan/swift-keychain.git"
+    "url": "git+https://github.com/coreykouns/swift-keychain.git"
   },
   "keywords": [
     "ecosystem:cordova",
     "cordova-ios"
   ],
-  "author": "Jeremy Keczan",
+  "author": "Corey Kouns",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/jkeczan/swift-keychain/issues"
+    "url": "https://github.com/coreykouns/swift-keychain/issues"
   },
-  "homepage": "https://github.com/jkeczan/swift-keychain#readme"
+  "homepage": "https://github.com/coreykouns/swift-keychain#readme"
 }
