@@ -41,7 +41,7 @@
     self = [super init];
     if (self) {
         _service = service;
-        _accessGroup = "fielddocuments";
+        _accessGroup = @"fielddocuments";
         _defaultAccessiblity = A0SimpleKeychainItemAccessibleAfterFirstUnlock;
         _useAccessControl = NO;
     }
