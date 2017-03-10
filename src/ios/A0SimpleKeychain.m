@@ -46,7 +46,7 @@
         _defaultAccessiblity = A0SimpleKeychainItemAccessibleAfterFirstUnlock;
         _useAccessControl = NO;
     }
-    NSLog(accessGroup);
+    NSLog(@"%@", accessGroup);
     return self;
 }
 
