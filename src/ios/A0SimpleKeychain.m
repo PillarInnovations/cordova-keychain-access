@@ -40,11 +40,13 @@
 - (instancetype)initWithService:(NSString *)service accessGroup:(NSString *)accessGroup {
     self = [super init];
     if (self) {
+      NSLog(@"self exists inside initWithService");
         _service = service;
         _accessGroup = accessGroup;
         _defaultAccessiblity = A0SimpleKeychainItemAccessibleAfterFirstUnlock;
         _useAccessControl = NO;
     }
+    NSLog(accessGroup);
     return self;
 }
 
