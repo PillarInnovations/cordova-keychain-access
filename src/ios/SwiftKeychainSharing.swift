@@ -1,3 +1,5 @@
+#import <Cordova/CDV.h>
+
 @objc(ModusEchoSwift) class ModusEchoSwift : CDVPlugin {
   func echo(command: CDVInvokedUrlCommand) {
     var pluginResult = CDVPluginResult(
