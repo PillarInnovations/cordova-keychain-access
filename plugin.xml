@@ -1,16 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="cordova-plugin-swift-keychain-sharing" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0"
-        xmlns:android="http://schemas.android.com/apk/res/android">
-    <name>SwiftKeychainSharing</name>
-    <js-module name="SwiftKeychainSharing" src="www/SwiftKeychainSharing.js">
-        <clobbers target="SwiftKeychainSharing"/>
-    </js-module>
-    <platform name="ios">
-        <config-file parent="/*" target="config.xml">
-            <feature name="SwiftKeychainSharing">
-                <param name="ios-package" value="SwiftKeychainSharing"/>
-            </feature>
-        </config-file>
-        <source-file src="src/ios/SwiftKeychainSharing.swift"/>
-    </platform>
+<plugin id="com-moduscreate-plugins-echoswift" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0" xmlns:android="http://schemas.android.com/apk/res/android">
+  <name>ModusEchoSwift</name>
+  <js-module name="ModusEchoSwift" src="www/ModusEchoSwift.js">
+    <clobbers target="modusechoswift" />
+  </js-module>
+  <platform name="ios">
+    <config-file target="config.xml" parent="/*">
+      <feature name="ModusEchoSwift">
+        <param name="ios-package" value="ModusEchoSwift" />
+      </feature>
+    </config-file>
+    <source-file src="src/ios/ModusEchoSwift.swift" />
+  </platform>
 </plugin>
