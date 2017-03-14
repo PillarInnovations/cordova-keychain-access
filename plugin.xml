@@ -1,39 +1,16 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="cordova-plugin-ios-keychain"
-    version="3.0.1">
-
-    <name>KeyChain Plugin for Cordova iOS</name>
-    <description>This plugin allows your app access to the iOS KeyChain from Cordova. See: https://developer.apple.com/library/mac/documentation/security/conceptual/keychainServConcepts/iPhoneTasks/iPhoneTasks.html</description>
-    <license>Apache 2.0</license>
-    <keywords>keychain</keywords>
-
-    <engines>
-        <engine name="cordova" version=">=2.2.0" />
-    </engines>
-
-    <asset src="www/keychain.js" target="plugins/keychain.js" />
-
-	<js-module src="www/keychain.js" name="Keychain">
-    	<clobbers target="window.Keychain" />
-	</js-module>
-
-    <!-- ios -->
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-plugin-swift-keychain-sharing" version="0.0.1" xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>SwiftKeychainSharing</name>
+    <js-module name="SwiftKeychainSharing" src="www/SwiftKeychainSharing.js">
+        <clobbers target="cordova.plugins.SwiftKeychainSharing"/>
+    </js-module>
     <platform name="ios">
-        <!-- feature tag in config.xml -->
-        <config-file target="config.xml" parent="/widget">
-          <feature name="Keychain">
-            <param name="ios-package" value="CDVKeychain"/>
-          </feature>
+        <config-file parent="/*" target="config.xml">
+            <feature name="SwiftKeychainSharing">
+                <param name="ios-package" value="SwiftKeychainSharing"/>
+            </feature>
         </config-file>
-
-        <header-file src="src/ios/CDVKeychain.h" />
-        <header-file src="src/ios/A0SimpleKeychain.h"/>
-
-        <source-file src="src/ios/CDVKeychain.m"/>
-        <source-file src="src/ios/A0SimpleKeychain.m"/>
-
-        <framework src="Security.framework" />
-
+        <source-file src="src/ios/SwiftKeychainSharing.swift"/>
     </platform>
 </plugin>
