@@ -258,7 +258,7 @@ import Foundation
   @objc(test:)
   func test(command: CDVInvokedUrlCommand) {
     var message = command.arguments[0] as! String
-    message = KeychainSwiftAccessOptions.toString(kSecAttrAccessibleWhenUnlocked)
+    message = KeychainSwiftAccessOptions().toString(kSecAttrAccessibleWhenUnlocked)
 
     var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Hello \(message)")
     commandDelegate.send(pluginResult, callbackId:command.callbackId)
