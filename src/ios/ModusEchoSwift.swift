@@ -36,7 +36,7 @@ import Foundation
 
 
   /// Instantiate a KeychainSwift object
-  public init() { }
+  public override init() { }
 
   /**
 
