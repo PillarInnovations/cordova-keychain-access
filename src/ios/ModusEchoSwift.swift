@@ -1,6 +1,6 @@
 @objc(ModusEchoSwift) class ModusEchoSwift : CDVPlugin {
-  @objc(greet:)
-  func greet(command: CDVInvokedUrlCommand) {
+  @objc(test:)
+  func test(command: CDVInvokedUrlCommand) {
     var message = command.arguments[0] as! String
 
     var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Hello \(message)")
