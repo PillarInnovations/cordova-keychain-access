@@ -2,7 +2,7 @@
 
 
   func greet(command: CDVInvokedUrlCommand) {
-    var message = command.arguments[0] as String
+    var message = command.arguments[0] as! String
 
     var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Hello \(message)")
     commandDelegate.sendPluginResult(pluginResult, callbackId:command.callbackId)
