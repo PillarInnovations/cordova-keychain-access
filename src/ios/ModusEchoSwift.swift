@@ -27,13 +27,13 @@ import Foundation
   open var synchronizable: Bool = false
 
   /// Instantiate a KeychainSwift object
-  public override init() { }
+  public init() { }
 
   /**
 
   - parameter keyPrefix: a prefix that is added before the key in get/set methods. Note that `clear` method still clears everything from the Keychain.
   */
-  public override init(keyPrefix: String) {
+  public init(keyPrefix: String) {
     self.keyPrefix = keyPrefix
   }
 
