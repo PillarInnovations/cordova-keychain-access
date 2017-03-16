@@ -5,6 +5,6 @@
     var message = command.arguments[0] as! String
 
     var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Hello \(message)")
-    commandDelegate.sendPluginResult(pluginResult, callbackId:command.callbackId)
+    commandDelegate.send(pluginResult, callbackId:command.callbackId)
   }
 }
