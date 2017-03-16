@@ -260,7 +260,7 @@ import Foundation
   }
 }
 
-@objc public enum KeychainSwiftAccessOptions {
+@objc public enum KeychainSwiftAccessOptions: Int {
 
   /**
 
