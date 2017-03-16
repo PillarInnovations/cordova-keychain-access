@@ -26,9 +26,6 @@ import Foundation
   */
   open var synchronizable: Bool = false
 
-  /// Instantiate a KeychainSwift object
-  public init() { }
-
   /**
 
   - parameter keyPrefix: a prefix that is added before the key in get/set methods. Note that `clear` method still clears everything from the Keychain.
@@ -38,6 +35,10 @@ import Foundation
   }
 
   /**
+
+
+  /// Instantiate a KeychainSwift object
+  public init() { }
 
   Stores the text value in the keychain item under the given key.
 
