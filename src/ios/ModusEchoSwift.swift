@@ -30,6 +30,7 @@ import Foundation
 
   - parameter keyPrefix: a prefix that is added before the key in get/set methods. Note that `clear` method still clears everything from the Keychain.
   */
+  @objc(init:)
   public init(keyPrefix: String) {
     self.keyPrefix = keyPrefix
   }
@@ -49,6 +50,7 @@ import Foundation
    - returns: True if the text was successfully written to the keychain.
   */
   @discardableResult
+  @objc(set:)
   open func set(_ value: String, forKey key: String,
                   withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
 
