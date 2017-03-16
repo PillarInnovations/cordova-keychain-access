@@ -30,8 +30,7 @@ import Foundation
 
   - parameter keyPrefix: a prefix that is added before the key in get/set methods. Note that `clear` method still clears everything from the Keychain.
   */
-  @objc(init:)
-  public init(keyPrefix: String) {
+  @objc public init(keyPrefix: String) {
     self.keyPrefix = keyPrefix
   }
 
