@@ -50,7 +50,7 @@ import Foundation
   */
   @discardableResult
   @objc open func set(_ value: String, forKey key: String,
-                  withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
+                  withAccess access: toString(kSecAttrAccessibleWhenUnlocked)) -> Bool {
 
     if let value = value.data(using: String.Encoding.utf8) {
       return set(value, forKey: key, withAccess: access)
@@ -72,10 +72,10 @@ import Foundation
   */
   @discardableResult
   open func set(_ value: Data, forKey key: String,
-    withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
+    withAccess access: toString(kSecAttrAccessibleWhenUnlocked)) -> Bool {
 
     delete(key) // Delete any existing key before saving it
-    let accessible = access?.value ?? KeychainSwiftAccessOptions.defaultOption.value
+    let accessible = toString(kSecAttrAccessibleWhenUnlocked)
 
     let prefixedKey = keyWithPrefix(key)
 
@@ -104,7 +104,7 @@ import Foundation
   */
   @discardableResult
   open func set(_ value: Bool, forKey key: String,
-    withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
+    withAccess access: toString(kSecAttrAccessibleWhenUnlocked)) -> Bool {
 
     let bytes: [UInt8] = value ? [1] : [0]
     let data = Data(bytes: bytes)
