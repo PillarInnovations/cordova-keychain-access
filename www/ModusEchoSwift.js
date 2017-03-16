@@ -1,7 +1,11 @@
 var exec = require('cordova/exec');
 
 exports.echo = function(arg0, success, error) {
-  exec(success, error, 'ModusEchoSwift', 'echo', [arg0]);
+  exec(success, error, 'ModusEchoSwift', 'greet', [arg0]);
+};
+
+exports.greet = function(arg0, success, error) {
+  exec(success, error, 'ModusEchoSwift', 'greet', [arg0]);
 };
 
 exports.echojs = function(arg0, success, error) {
@@ -10,4 +14,4 @@ exports.echojs = function(arg0, success, error) {
   } else {
     error('Empty message!');
   }
-}; 
+};
