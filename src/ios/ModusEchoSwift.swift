@@ -1,6 +1,7 @@
+import Security
+import Foundation
+
 @objc(ModusEchoSwift) class ModusEchoSwift : CDVPlugin {
-  import Security
-  import Foundation
 
   var lastQueryParameters: [String: Any]? // Used by the unit tests
 
@@ -32,7 +33,7 @@
 
   - parameter keyPrefix: a prefix that is added before the key in get/set methods. Note that `clear` method still clears everything from the Keychain.
   */
-  public init(keyPrefix: String) {
+  public override init(keyPrefix: String) {
     self.keyPrefix = keyPrefix
   }
 
