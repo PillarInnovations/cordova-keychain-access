@@ -49,7 +49,8 @@ import Foundation
    - returns: True if the text was successfully written to the keychain.
   */
   @discardableResult
-  @objc open func set(_ value: String, key: String) -> Bool {
+  @objc open func set(_ value: String, forKey key: String,
+                  withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
 
     if let value = value.data(using: String.Encoding.utf8) {
       return set(value, forKey: key, withAccess: access)
