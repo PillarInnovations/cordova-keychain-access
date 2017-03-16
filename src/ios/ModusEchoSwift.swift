@@ -49,8 +49,8 @@ import Foundation
    - returns: True if the text was successfully written to the keychain.
   */
   @discardableResult
-  @objc open func set(_ value: String, forKey key: String,
-                  withAccess access: toString(kSecAttrAccessibleWhenUnlocked)) -> Bool {
+  open func set(_ value: String, forKey key: String,
+                  withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
 
     if let value = value.data(using: String.Encoding.utf8) {
       return set(value, forKey: key, withAccess: access)
@@ -258,13 +258,14 @@ import Foundation
   @objc(test:)
   func test(command: CDVInvokedUrlCommand) {
     var message = command.arguments[0] as! String
+    message = KeychainSwiftAccessOptions.toString(kSecAttrAccessibleWhenUnlocked)
 
     var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Hello \(message)")
     commandDelegate.send(pluginResult, callbackId:command.callbackId)
   }
 }
 
-@objc public enum KeychainSwiftAccessOptions: Int {
+public enum KeychainSwiftAccessOptions {
 
   /**
 
