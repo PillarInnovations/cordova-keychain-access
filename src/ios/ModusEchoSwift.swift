@@ -49,10 +49,11 @@ import Foundation
    - returns: True if the text was successfully written to the keychain.
   */
   @discardableResult
-  @objc open func set(_ value: String, forKey key: String) -> Bool {
+  @objc open func set(_ value: String, forKey key: String,
+                  withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
 
     if let value = value.data(using: String.Encoding.utf8) {
-      return set(value, forKey: key)
+      return set(value, forKey: key, withAccess: access)
     }
 
     return false
@@ -70,9 +71,11 @@ import Foundation
 
   */
   @discardableResult
-  open func set(_ value: Data, forKey key: String) -> Bool {
+  open func set(_ value: Data, forKey key: String,
+    withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
 
     delete(key) // Delete any existing key before saving it
+    let accessible = access?.value ?? KeychainSwiftAccessOptions.defaultOption.value
 
     let prefixedKey = keyWithPrefix(key)
 
@@ -100,12 +103,13 @@ import Foundation
   - returns: True if the value was successfully written to the keychain.
   */
   @discardableResult
-  open func set(_ value: Bool, forKey key: String) -> Bool {
+  open func set(_ value: Bool, forKey key: String,
+    withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
 
     let bytes: [UInt8] = value ? [1] : [0]
     let data = Data(bytes: bytes)
 
-    return set(data, forKey: key)
+    return set(data, forKey: key, withAccess: access)
   }
 
   /**
