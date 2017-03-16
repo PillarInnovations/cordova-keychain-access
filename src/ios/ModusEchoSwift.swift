@@ -260,7 +260,7 @@ import Foundation
   }
 }
 
-public enum KeychainSwiftAccessOptions: AnyObject {
+@objc public enum KeychainSwiftAccessOptions {
 
   /**
 
