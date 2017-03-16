@@ -1,6 +1,5 @@
 @objc(ModusEchoSwift) class ModusEchoSwift : CDVPlugin {
-
-
+  @objc(greet:)
   func greet(command: CDVInvokedUrlCommand) {
     var message = command.arguments[0] as! String
 
