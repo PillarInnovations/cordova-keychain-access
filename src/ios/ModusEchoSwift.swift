@@ -34,11 +34,11 @@ import Foundation
     self.keyPrefix = keyPrefix
   }
 
-  /**
-
 
   /// Instantiate a KeychainSwift object
   public init() { }
+
+  /**
 
   Stores the text value in the keychain item under the given key.
 
@@ -57,6 +57,59 @@ import Foundation
     }
 
     return false
+  }
+
+  /**
+
+  Stores the data in the keychain item under the given key.
+
+  - parameter key: Key under which the data is stored in the keychain.
+  - parameter value: Data to be written to the keychain.
+  - parameter withAccess: Value that indicates when your app needs access to the text in the keychain item. By default the .AccessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.
+
+  - returns: True if the text was successfully written to the keychain.
+
+  */
+  @discardableResult
+  open func set(_ value: Data, forKey key: String,
+    withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
+
+    delete(key) // Delete any existing key before saving it
+    let accessible = access?.value ?? KeychainSwiftAccessOptions.defaultOption.value
+
+    let prefixedKey = keyWithPrefix(key)
+
+    var query: [String : Any] = [
+      KeychainSwiftConstants.klass       : kSecClassGenericPassword,
+      KeychainSwiftConstants.attrAccount : prefixedKey,
+      KeychainSwiftConstants.valueData   : value,
+      KeychainSwiftConstants.accessible  : accessible
+    ]
+
+    query = addAccessGroupWhenPresent(query)
+    query = addSynchronizableIfRequired(query, addingItems: true)
+    lastQueryParameters = query
+
+    lastResultCode = SecItemAdd(query as CFDictionary, nil)
+
+    return lastResultCode == noErr
+  }
+
+  /**
+  Stores the boolean value in the keychain item under the given key.
+  - parameter key: Key under which the value is stored in the keychain.
+  - parameter value: Boolean to be written to the keychain.
+  - parameter withAccess: Value that indicates when your app needs access to the value in the keychain item. By default the .AccessibleWhenUnlocked option is used that permits the data to be accessed only while the device is unlocked by the user.
+  - returns: True if the value was successfully written to the keychain.
+  */
+  @discardableResult
+  open func set(_ value: Bool, forKey key: String,
+    withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
+
+    let bytes: [UInt8] = value ? [1] : [0]
+    let data = Data(bytes: bytes)
+
+    return set(data, forKey: key, withAccess: access)
   }
 
   @objc(test:)
