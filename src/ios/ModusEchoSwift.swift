@@ -251,6 +251,10 @@ import Foundation
     return result
   }
 
+  func toString(_ value: CFString) -> String {
+    return KeychainSwiftConstants.toString(value)
+  }
+
   @objc(test:)
   func test(command: CDVInvokedUrlCommand) {
     var message = command.arguments[0] as! String
