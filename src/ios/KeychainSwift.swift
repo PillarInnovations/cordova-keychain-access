@@ -8,7 +8,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[2] != nil {
+    if command.arguments[2]: String != nil {
       keychain.accessGroup = command.arguments[2] as? String
     }
 
@@ -35,7 +35,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[1] != nil {
+    if command.arguments[1]: String != nil {
       keychain.accessGroup = command.arguments[1] as? String
     }
 
@@ -61,7 +61,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[1] != nil {
+    if command.arguments[1]: String != nil {
       keychain.accessGroup = command.arguments[1] as? String
     }
 
@@ -88,7 +88,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[0] != nil {
+    if command.arguments[0]: String != nil {
       keychain.accessGroup = command.arguments[0] as? String
     }
 
@@ -117,7 +117,7 @@
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
-      messageAsBool: result!
+      messageAs: result!
     )
 
     self.commandDelegate!.send(
