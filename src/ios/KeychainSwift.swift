@@ -8,7 +8,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[2] as! String != nil {
+    if command.arguments[2] != nil {
       keychain.accessGroup = command.arguments[2] as? String
     }
 
@@ -35,7 +35,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[1] as! String != nil {
+    if command.arguments[1] != nil {
       keychain.accessGroup = command.arguments[1] as? String
     }
 
@@ -61,7 +61,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[1] as! String != nil {
+    if command.arguments[1] != nil {
       keychain.accessGroup = command.arguments[1] as? String
     }
 
@@ -88,7 +88,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[0] as! String != nil {
+    if command.arguments[0] != nil {
       keychain.accessGroup = command.arguments[0] as? String
     }
 
@@ -98,26 +98,6 @@
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
       messageAs: result
-    )
-
-    self.commandDelegate!.send(
-      pluginResult,
-      callbackId: command.callbackId
-    )
-  }
-
-  @objc(getData:)
-  func getData(command: CDVInvokedUrlCommand) {
-    var pluginResult = CDVPluginResult(
-      status: CDVCommandStatus_ERROR
-    )
-
-    let keychain = KeychainSwift()
-    let result = keychain.getData(command.arguments[0] as! String)
-
-    pluginResult = CDVPluginResult(
-      status: CDVCommandStatus_OK,
-      messageAs: result as? String
     )
 
     self.commandDelegate!.send(

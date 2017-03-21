@@ -32,9 +32,5 @@ exports.clear = function(success, error, accessGroup) {
   }
 };
 
-exports.getData = function(key, success, error) {
-  exec(success, error, 'PillarKeychainSwift', 'getData', [key]);
-};
-
 //need to pass in params for synchronizable, withAccess, keyPrefix
-//getBool was giving me issues in XCode
+//getBool and getData were giving me issues in XCode
