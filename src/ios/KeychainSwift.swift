@@ -6,7 +6,7 @@
     )
 
     let keychain = KeychainSwift()
-    keychain.set(command.arguments[0] as String, forKey: command.arguments[1] as String)
+    keychain.set(command.arguments[0] as! String, forKey: command.arguments[1] as! String)
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
@@ -26,7 +26,7 @@
     )
 
     let keychain = KeychainSwift()
-    let result = keychain.get(command.arguments[0] as String)
+    let result = keychain.get(command.arguments[0] as! String)
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
