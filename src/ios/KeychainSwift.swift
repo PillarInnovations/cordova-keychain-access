@@ -8,9 +8,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments.indices.contains(2) != nil {
-      keychain.accessGroup = command.arguments[2] as? String
-    }
+    keychain.accessGroup = command.arguments[2] as? String ?? nil
 
     keychain.set(command.arguments[0] as! String, forKey: command.arguments[1] as! String)
     let result = "Successfully set key \(command.arguments[1]) with value \(command.arguments[0])"
