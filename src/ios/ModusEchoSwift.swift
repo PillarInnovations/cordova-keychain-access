@@ -48,15 +48,31 @@ import Foundation
 
    - returns: True if the text was successfully written to the keychain.
   */
-  @discardableResult
-  open func set(_ value: String, forKey key: String,
-                  withAccess access: KeychainSwiftAccessOptions? = nil) -> Bool {
 
-    if let value = value.data(using: String.Encoding.utf8) {
+
+  //USING STRING LITERAL, WHICH RETURNED AS ak, FOR WITHACCESS
+  //MIGHT NEED TO COPY TEST FUNCTION, AND USE COMMAND.ARGUMENTS TO SET THINGS
+  @discardableResult
+  open func set(command: CDVInvokedUrlCommand) -> Bool {
+
+    var value = command.arguments[0] as! String
+    var key = command.arguments[1] as! String
+    var access = command.arguments[2] as! String
+
+    if value.data(using: String.Encoding.utf8) {
       return set(value, forKey: key, withAccess: access)
     }
 
     return false
+  }
+
+  @objc(test:)
+  func test(command: CDVInvokedUrlCommand) {
+    var message = command.arguments[0] as! String
+    message = toString(kSecAttrAccessibleWhenUnlocked)
+
+    var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Hello \(message)")
+    commandDelegate.send(pluginResult, callbackId:command.callbackId)
   }
 
   /**
@@ -253,15 +269,6 @@ import Foundation
 
   func toString(_ value: CFString) -> String {
     return KeychainSwiftConstants.toString(value)
-  }
-
-  @objc(test:)
-  func test(command: CDVInvokedUrlCommand) {
-    var message = command.arguments[0] as! String
-    message = toString(kSecAttrAccessibleWhenUnlocked)
-
-    var pluginResult = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: "Hello \(message)")
-    commandDelegate.send(pluginResult, callbackId:command.callbackId)
   }
 }
 
