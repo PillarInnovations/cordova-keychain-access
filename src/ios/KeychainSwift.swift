@@ -1,4 +1,4 @@
-import KeychainSwiftLib
+import KeychainSwift
 
 @objc(PillarKeychainSwift) class PillarKeychainSwift : CDVPlugin {
   @objc(echo:)
