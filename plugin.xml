@@ -2,13 +2,13 @@
 <plugin id="com-pillarinnovations-plugins-keychainswift" version="0.0.1"
         xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
-  <name>KeychainSwift</name>
+  <name>PillarKeychainSwift</name>
   <js-module name="KeychainSwift" src="www/KeychainSwift.js">
     <clobbers target="keychainswift" />
   </js-module>
   <platform name="ios">
     <config-file target="config.xml" parent="/*">
-      <feature name="KeychainSwift">
+      <feature name="PillarKeychainSwift">
         <param name="ios-package" value="PillarKeychainSwift" />
       </feature>
     </config-file>
