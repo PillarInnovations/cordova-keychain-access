@@ -1,5 +1,3 @@
-import KeychainSwift
-
 @objc(KeychainSwift) class KeychainSwift : CDVPlugin {
   @objc(echo:)
   func echo(command: CDVInvokedUrlCommand) {
@@ -27,8 +25,8 @@ import KeychainSwift
     )
 
     let keychain = KeychainSwift()
-    keychain.set("hello world", forKey: "testKey")
-    let result = keychain.get("testKey")
+    //keychain.set("hello world", forKey: "testKey")
+    //let result = keychain.get("testKey")
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
