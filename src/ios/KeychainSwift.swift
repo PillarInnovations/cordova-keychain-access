@@ -9,7 +9,7 @@
 
     //Check if accessGroup string was sent in
     if command.arguments.count == 3 {
-      print("Three arguments in set!")
+      print("Three arguments in set! Access group is: \(command.arguments[2])")
       keychain.accessGroup = command.arguments[2] as! String
     }
 
@@ -42,7 +42,7 @@
 
     //Check if accessGroup string was sent in
     if command.arguments.count == 2 {
-      print("Two arguments in get!")
+      print("Two arguments in get! Access group is: \(command.arguments[1])")
       keychain.accessGroup = command.arguments[1] as! String
     }
 
