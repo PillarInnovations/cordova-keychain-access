@@ -7,10 +7,11 @@
 
     let keychain = KeychainSwift()
     keychain.set(command.arguments[0] as! String, forKey: command.arguments[1] as! String)
+    let result = "Successfully set key /(command.arguments[1]) with value /(command.arguments[0])"
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
-      messageAs: "Successfully set key "+command.arguments[1]+" with value "+command.arguments[0]
+      messageAs: result
     )
 
     self.commandDelegate!.send(
