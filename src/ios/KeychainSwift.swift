@@ -106,26 +106,6 @@
     )
   }
 
-  @objc(getBool:)
-  func getBool(command: CDVInvokedUrlCommand) {
-    var pluginResult = CDVPluginResult(
-      status: CDVCommandStatus_ERROR
-    )
-
-    let keychain = KeychainSwift()
-    let result = keychain.getBool(command.arguments[0] as! String)
-
-    pluginResult = CDVPluginResult(
-      status: CDVCommandStatus_OK,
-      messageAs: result!
-    )
-
-    self.commandDelegate!.send(
-      pluginResult,
-      callbackId: command.callbackId
-    )
-  }
-
   @objc(getData:)
   func getData(command: CDVInvokedUrlCommand) {
     var pluginResult = CDVPluginResult(
