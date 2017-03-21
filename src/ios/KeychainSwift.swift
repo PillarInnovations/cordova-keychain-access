@@ -28,6 +28,7 @@
     //keychain.set("hello world", forKey: "testKey")
     //let result = keychain.get("testKey")
     let result = "dood"
+    print("this is a print")
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
