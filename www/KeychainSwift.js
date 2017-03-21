@@ -1,13 +1,9 @@
 var exec = require('cordova/exec');
 
-/*exports.set = function(value, key, keychainAccessOption, success, error) {
-  exec(success, error, 'KeychainSwift', 'set', [value, key, keychainAccessOption]);
-};*/
-
-exports.echo = function(arg0, success, error) {
-  exec(success, error, 'PillarKeychainSwift', 'echo', [arg0]);
+exports.set = function(value, key, success, error) {
+  exec(success, error, 'PillarKeychainSwift', 'set', [value, key]);
 };
 
-exports.anotherMethod = function(arg0, success, error) {
-  exec(success, error, 'PillarKeychainSwift', 'anotherMethod', [arg0]);
+exports.get = function(key, success, error) {
+  exec(success, error, 'PillarKeychainSwift', 'get', [key]);
 };

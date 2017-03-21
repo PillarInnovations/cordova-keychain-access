@@ -1,15 +1,16 @@
 @objc(PillarKeychainSwift) class PillarKeychainSwift : CDVPlugin {
-  @objc(echo:)
-  func echo(command: CDVInvokedUrlCommand) {
+  @objc(set:)
+  func set(command: CDVInvokedUrlCommand) {
     var pluginResult = CDVPluginResult(
       status: CDVCommandStatus_ERROR
     )
 
-    let msg = command.arguments[0] as? String ?? ""
+    let keychain = KeychainSwift()
+    keychain.set(command.arguments[0], forKey: command.arguments[1])
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
-      messageAs: msg
+      messageAs: "Successfully set key /(command.arguments[1]) with value /(command.arguments[0])"
     )
 
     self.commandDelegate!.send(
@@ -18,15 +19,14 @@
     )
   }
 
-  @objc(anotherMethod:)
-  func anotherMethod(command: CDVInvokedUrlCommand) {
+  @objc(get:)
+  func get(command: CDVInvokedUrlCommand) {
     var pluginResult = CDVPluginResult(
       status: CDVCommandStatus_ERROR
     )
 
     let keychain = KeychainSwift()
-    keychain.set("hello world", forKey: "testKey")
-    let result = keychain.get("testKey")
+    let result = keychain.get(command.arguments[0])
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
