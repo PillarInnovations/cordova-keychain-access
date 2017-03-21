@@ -5,9 +5,9 @@ var exec = require('cordova/exec');
 };*/
 
 exports.echo = function(arg0, success, error) {
-  exec(success, error, 'KeychainSwift', 'echo', [arg0]);
+  exec(success, error, 'PillarKeychainSwift', 'echo', [arg0]);
 };
 
 exports.anotherMethod = function(arg0, success, error) {
-  exec(success, error, 'KeychainSwift', 'anotherMethod', [arg0]);
+  exec(success, error, 'PillarKeychainSwift', 'anotherMethod', [arg0]);
 };

@@ -1,4 +1,4 @@
-@objc(KeychainSwift) class KeychainSwift : CDVPlugin {
+@objc(PillarKeychainSwift) class PillarKeychainSwift : CDVPlugin {
   @objc(echo:)
   func echo(command: CDVInvokedUrlCommand) {
     var pluginResult = CDVPluginResult(
