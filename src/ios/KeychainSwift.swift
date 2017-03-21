@@ -10,7 +10,7 @@
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
-      messageAs: "Successfully set key /(command.arguments[1]) with value /(command.arguments[0])"
+      messageAs: "Successfully set key "+command.arguments[1]+" with value "+command.arguments[0]
     )
 
     self.commandDelegate!.send(
