@@ -2,6 +2,7 @@ var exec = require('cordova/exec');
 
 exports.set = function(value, key, success, error, accessGroup) {
   if(accessGroup) {
+    console.log("access group is defined in set: ", accessGroup);
     exec(success, error, 'PillarKeychainSwift', 'set', [value, key, accessGroup]);
   } else {
     exec(success, error, 'PillarKeychainSwift', 'set', [value, key]);
@@ -10,6 +11,7 @@ exports.set = function(value, key, success, error, accessGroup) {
 
 exports.get = function(key, success, error, accessGroup) {
   if(accessGroup) {
+    console.log("access group is defined in get: ", accessGroup);
     exec(success, error, 'PillarKeychainSwift', 'get', [key, accessGroup]);
   } else {
     exec(success, error, 'PillarKeychainSwift', 'get', [key]);
