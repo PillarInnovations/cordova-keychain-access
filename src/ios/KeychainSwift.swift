@@ -9,7 +9,7 @@
 
     //Check if accessGroup string was sent in
     if command.arguments[2] != nil {
-      keychain.accessGroup = command.arguments[2] as! String
+      keychain.accessGroup = command.arguments[2] as? String
     }
 
     keychain.set(command.arguments[0] as! String, forKey: command.arguments[1] as! String)
@@ -36,7 +36,7 @@
 
     //Check if accessGroup string was sent in
     if command.arguments[1] != nil {
-      keychain.accessGroup = command.arguments[1] as! String
+      keychain.accessGroup = command.arguments[1] as? String
     }
 
     let result = keychain.get(command.arguments[0] as! String)
@@ -62,7 +62,7 @@
 
     //Check if accessGroup string was sent in
     if command.arguments[1] != nil {
-      keychain.accessGroup = command.arguments[1] as! String
+      keychain.accessGroup = command.arguments[1] as? String
     }
 
     keychain.delete(command.arguments[0] as! String)
@@ -89,7 +89,7 @@
 
     //Check if accessGroup string was sent in
     if command.arguments[0] != nil {
-      keychain.accessGroup = command.arguments[0] as! String
+      keychain.accessGroup = command.arguments[0] as? String
     }
 
     keychain.clear()
@@ -117,7 +117,7 @@
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
-      messageAsBool: result
+      messageAsBool: result as! Bool
     )
 
     self.commandDelegate!.send(
