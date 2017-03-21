@@ -8,7 +8,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[2] as String != nil {
+    if command.arguments[2] as! String != nil {
       keychain.accessGroup = command.arguments[2] as? String
     }
 
@@ -35,7 +35,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[1] as String != nil {
+    if command.arguments[1] as! String != nil {
       keychain.accessGroup = command.arguments[1] as? String
     }
 
@@ -61,7 +61,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[1] as String != nil {
+    if command.arguments[1] as! String != nil {
       keychain.accessGroup = command.arguments[1] as? String
     }
 
@@ -88,7 +88,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if command.arguments[0] as String != nil {
+    if command.arguments[0] as! String != nil {
       keychain.accessGroup = command.arguments[0] as? String
     }
 
