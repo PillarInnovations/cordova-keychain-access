@@ -1,17 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="com-moduscreate-plugins-echoswift" version="0.0.1"
+<plugin id="com-pillarinnovations-plugins-keychainswift" version="0.0.1"
         xmlns="http://apache.org/cordova/ns/plugins/1.0"
         xmlns:android="http://schemas.android.com/apk/res/android">
-  <name>ModusEchoSwift</name>
-  <js-module name="ModusEchoSwift" src="www/ModusEchoSwift.js">
-    <clobbers target="modusechoswift" />
+  <name>KeychainSwift</name>
+  <js-module name="KeychainSwift" src="www/KeychainSwift.js">
+    <clobbers target="keychainswift" />
   </js-module>
   <platform name="ios">
     <config-file target="config.xml" parent="/*">
-      <feature name="ModusEchoSwift">
-        <param name="ios-package" value="ModusEchoSwift" />
+      <feature name="KeychainSwift">
+        <param name="ios-package" value="KeychainSwift" />
       </feature>
     </config-file>
-    <source-file src="src/ios/ModusEchoSwift.swift" />
+    <source-file src="src/ios/KeychainSwift.swift" />
   </platform>
 </plugin>
