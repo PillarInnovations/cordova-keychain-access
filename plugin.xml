@@ -13,5 +13,6 @@
       </feature>
     </config-file>
     <source-file src="src/ios/KeychainSwift.swift" />
+    <source-file src="src/ios/KeychainSwiftLib.swift" />
   </platform>
 </plugin>
