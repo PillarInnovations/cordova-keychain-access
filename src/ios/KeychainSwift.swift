@@ -13,7 +13,11 @@
     }
 
     keychain.set(command.arguments[0] as! String, forKey: command.arguments[1] as! String)
-    let result = "Successfully set key \(command.arguments[1]) with value \(command.arguments[0])"
+    if command.arguments.count == 3 {
+      let result = "Successfully set key \(command.arguments[1]) with value \(command.arguments[0]) on access group \(command.arguments[2])"
+    } else {
+      let result = "Successfully set key \(command.arguments[1]) with value \(command.arguments[0])"
+    }
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
