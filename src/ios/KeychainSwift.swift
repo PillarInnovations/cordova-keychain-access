@@ -8,7 +8,7 @@
     let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
-    if array.indices.contains(2) != nil {
+    if command.arguments.indices.contains(2) != nil {
       keychain.accessGroup = command.arguments[2] as? String
     }
 
