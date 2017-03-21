@@ -117,7 +117,7 @@
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
-      messageAsBool: result
+      messageAsBool: result!
     )
 
     self.commandDelegate!.send(
