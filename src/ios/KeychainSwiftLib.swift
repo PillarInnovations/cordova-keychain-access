@@ -51,6 +51,7 @@ open class KeychainSwift {
   */
   public init(keyPrefix: String) {
     self.keyPrefix = keyPrefix
+    print("Woot! Keychain init function!")
   }
   
   /**
