@@ -1,3 +1,5 @@
+import KeychainSwiftLib
+
 @objc(PillarKeychainSwift) class PillarKeychainSwift : CDVPlugin {
   @objc(echo:)
   func echo(command: CDVInvokedUrlCommand) {
