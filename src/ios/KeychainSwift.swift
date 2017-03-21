@@ -27,6 +27,7 @@
     let keychain = KeychainSwift()
     //keychain.set("hello world", forKey: "testKey")
     //let result = keychain.get("testKey")
+    let result = "hey there"
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
