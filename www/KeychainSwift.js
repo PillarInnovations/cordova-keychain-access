@@ -7,3 +7,7 @@ var exec = require('cordova/exec');
 exports.echo = function(arg0, success, error) {
   exec(success, error, 'KeychainSwift', 'echo', [arg0]);
 };
+
+exports.anotherMethod = function(arg0, success, error) {
+  exec(success, error, 'KeychainSwift', 'anotherMethod', [arg0]);
+};
