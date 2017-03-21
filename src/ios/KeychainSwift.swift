@@ -13,7 +13,7 @@
     }
 
     keychain.set(command.arguments[0] as! String, forKey: command.arguments[1] as! String)
-    let result = ""
+    var result = ""
     if command.arguments.count == 3 {
       result = "Successfully set key \(command.arguments[1]) with value \(command.arguments[0]) on access group \(command.arguments[2])"
     } else {
