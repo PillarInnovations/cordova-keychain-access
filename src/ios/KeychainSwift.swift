@@ -1,17 +1,16 @@
 @objc(PillarKeychainSwift) class PillarKeychainSwift : CDVPlugin {
-  let keychain = KeychainSwift()
-
   @objc(set:)
   func set(command: CDVInvokedUrlCommand) {
     var pluginResult = CDVPluginResult(
       status: CDVCommandStatus_ERROR
     )
 
+    let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
     if command.arguments.count == 3 {
       print("Three arguments in set! Access group is: \(command.arguments[2])")
-      keychain.accessGroup = command.arguments[2] as! String
+      keychain.accessGroup = (command.arguments[2] as! String)
     }
 
     keychain.set(command.arguments[0] as! String, forKey: command.arguments[1] as! String)
@@ -39,6 +38,8 @@
       status: CDVCommandStatus_ERROR
     )
 
+    let keychain = KeychainSwift()
+
     //Check if accessGroup string was sent in
     if command.arguments.count == 2 {
       print("Two arguments in get! Access group is: \(command.arguments[1])")
@@ -64,6 +65,8 @@
       status: CDVCommandStatus_ERROR
     )
 
+    let keychain = KeychainSwift()
+
     //Check if accessGroup string was sent in
     if command.arguments.count == 2 {
       keychain.accessGroup = command.arguments[1] as! String
@@ -88,6 +91,8 @@
     var pluginResult = CDVPluginResult(
       status: CDVCommandStatus_ERROR
     )
+
+    let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
     if command.arguments.count == 1 {
