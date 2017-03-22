@@ -193,7 +193,7 @@
         print(keyValue)
         pluginResult = CDVPluginResult(
           status: CDVCommandStatus_OK,
-          messageAs: result
+          messageAs: result as! String
         )
         result
       }
@@ -202,7 +202,7 @@
       result = "Error loading from Keychain: \(resultCodeLoad)"
       pluginResult = CDVPluginResult(
         status: CDVCommandStatus_ERROR,
-        messageAs: result
+        messageAs: result as! String
       )
     }
 
