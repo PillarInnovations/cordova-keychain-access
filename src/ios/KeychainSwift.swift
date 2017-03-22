@@ -47,6 +47,7 @@
     }
 
     let result = keychain.get(command.arguments[0] as! String)
+    print("omg we got a result: \(result)")
 
     pluginResult = CDVPluginResult(
       status: CDVCommandStatus_OK,
