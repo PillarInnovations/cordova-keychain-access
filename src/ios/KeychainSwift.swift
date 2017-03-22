@@ -115,10 +115,10 @@
 
   @objc(setRaw:)
   func setRaw(command: CDVInvokedUrlCommand) {
-    let itemKey = command.arguments[1]
-    let itemValue = command.arguments[0]
-    let keychainAccessGroupName = command.arguments[2]
-    guard let valueData = (itemValue as AnyObject).data else {
+    let itemKey = command.arguments[1] as! String
+    let itemValue = command.arguments[0] as! String
+    let keychainAccessGroupName = command.arguments[2] as! String
+    guard let valueData = itemValue.data(using: String.Encoding.utf8) else {
       print("Error saving text to Keychain")
       return
     }
