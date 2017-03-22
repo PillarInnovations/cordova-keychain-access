@@ -9,12 +9,30 @@ exports.set = function(value, key, success, error, accessGroup) {
   }
 };
 
+exports.setRaw = function(value, key, success, error, accessGroup) {
+  if(accessGroup) {
+    console.log("access group is defined in setRaw: ", accessGroup);
+    exec(success, error, 'PillarKeychainSwift', 'setRaw', [value, key, accessGroup]);
+  } else {
+    exec(success, error, 'PillarKeychainSwift', 'setRaw', [value, key]);
+  }
+};
+
 exports.get = function(key, success, error, accessGroup) {
   if(accessGroup) {
     console.log("access group is defined in get: ", accessGroup);
     exec(success, error, 'PillarKeychainSwift', 'get', [key, accessGroup]);
   } else {
     exec(success, error, 'PillarKeychainSwift', 'get', [key]);
+  }
+};
+
+exports.getRaw = function(key, success, error, accessGroup) {
+  if(accessGroup) {
+    console.log("access group is defined in getRaw: ", accessGroup);
+    exec(success, error, 'PillarKeychainSwift', 'getRaw', [key, accessGroup]);
+  } else {
+    exec(success, error, 'PillarKeychainSwift', 'getRaw', [key]);
   }
 };
 

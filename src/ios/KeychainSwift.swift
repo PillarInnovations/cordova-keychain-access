@@ -112,4 +112,60 @@
       callbackId: command.callbackId
     )
   }
+
+  @objc(setRaw:)
+  func setRaw(command: CDVInvokedUrlCommand) {
+    let itemKey = command.arguments[1]
+    let itemValue = command.arguments[0]
+    let keychainAccessGroupName = command.arguments[2]
+    guard let valueData = itemValue.data(using: String.Encoding.utf8) else {
+      print("Error saving text to Keychain")
+      return
+    }
+
+    let queryAdd: [String: AnyObject] = [
+      kSecClass as String: kSecClassGenericPassword,
+      kSecAttrAccount as String: itemKey as AnyObject,
+      kSecValueData as String: valueData as AnyObject,
+      kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked,
+      kSecAttrAccessGroup as String: keychainAccessGroupName as AnyObject
+    ]
+
+    let resultCode = SecItemAdd(queryAdd as CFDictionary, nil)
+
+    if resultCode != noErr {
+      print("Error saving to Keychain: \(resultCode)")
+    }
+  }
+
+  @objc(getRaw:)
+  func getRaw(command: CDVInvokedUrlCommand) {
+    let itemKey = command.arguments[0]
+    let keychainAccessGroupName = command.arguments[1]
+    let queryLoad: [String: AnyObject] = [
+      kSecClass as String: kSecClassGenericPassword,
+      kSecAttrAccount as String: itemKey as AnyObject,
+      kSecReturnData as String: kCFBooleanTrue,
+      kSecMatchLimit as String: kSecMatchLimitOne,
+      kSecAttrAccessGroup as String: keychainAccessGroupName as AnyObject
+    ]
+
+    var result: AnyObject?
+
+    let resultCodeLoad = withUnsafeMutablePointer(to: &result) {
+      SecItemCopyMatching(queryLoad as CFDictionary, UnsafeMutablePointer($0))
+    }
+
+    if resultCodeLoad == noErr {
+      if let result = result as? Data,
+        let keyValue = NSString(data: result,
+                                encoding: String.Encoding.utf8.rawValue) as? String {
+
+        // Found successfully
+        print(keyValue)
+      }
+    } else {
+      print("Error loading from Keychain: \(resultCodeLoad)")
+    }
+  }
 }
