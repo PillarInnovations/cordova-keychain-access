@@ -1,5 +1,5 @@
 @objc(PillarKeychainSwift) class PillarKeychainSwift : CDVPlugin {
-  @objc let keychain = KeychainSwift()
+  let keychain = KeychainSwift()
   @objc(set:)
   func set(command: CDVInvokedUrlCommand) {
     var pluginResult = CDVPluginResult(
@@ -193,7 +193,7 @@
         print(keyValue)
         pluginResult = CDVPluginResult(
           status: CDVCommandStatus_OK,
-          messageAs: keyValue as! String
+          messageAs: keyValue
         )
         //result
       }
