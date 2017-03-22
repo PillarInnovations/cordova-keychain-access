@@ -118,7 +118,7 @@
     let itemKey = command.arguments[1]
     let itemValue = command.arguments[0]
     let keychainAccessGroupName = command.arguments[2]
-    guard let valueData = (itemValue as AnyObject).data(using: String.Encoding.utf8) else {
+    guard let valueData = itemValue.data else {
       print("Error saving text to Keychain")
       return
     }
