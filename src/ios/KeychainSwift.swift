@@ -9,7 +9,7 @@
     //Check if accessGroup string was sent in
     if command.arguments.count == 3 {
       print("Three arguments in set! Access group is: \(command.arguments[2])")
-      keychain.accessGroup = command.arguments[2] as! String
+      keychain.accessGroup = "com.pillarinnovations.internal.testkeychain"
     }
 
     keychain.set(command.arguments[0] as! String, forKey: command.arguments[1] as! String)
@@ -40,7 +40,7 @@
     //Check if accessGroup string was sent in
     if command.arguments.count == 2 {
       print("Two arguments in get! Access group is: \(command.arguments[1])")
-      keychain.accessGroup = (command.arguments[1] as! String)
+      keychain.accessGroup = "com.pillarinnovations.internal.testkeychain"
     }
 
     let result = keychain.get(command.arguments[0] as! String)
