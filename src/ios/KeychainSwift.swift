@@ -198,7 +198,8 @@
                                 encoding: String.Encoding.utf8.rawValue) as? String {
 
         // Found successfully
-        print(keyValue)
+        print("hey keyvalue in getRaw: \(keyValue)")
+        print("hey result in getRaw: \(result)")
         pluginResult = CDVPluginResult(
           status: CDVCommandStatus_OK,
           messageAs: keyValue
