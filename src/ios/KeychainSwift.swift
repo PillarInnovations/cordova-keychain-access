@@ -43,7 +43,7 @@
     //Check if accessGroup string was sent in
     if command.arguments.count == 2 {
       print("Two arguments in get! Access group is: \(command.arguments[1])")
-      keychain.accessGroup = command.arguments[1] as! String
+      keychain.accessGroup = (command.arguments[1] as! String)
     }
 
     let result = keychain.get(command.arguments[0] as! String)
@@ -69,7 +69,7 @@
 
     //Check if accessGroup string was sent in
     if command.arguments.count == 2 {
-      keychain.accessGroup = command.arguments[1] as! String
+      keychain.accessGroup = (command.arguments[1] as! String)
     }
 
     keychain.delete(command.arguments[0] as! String)
@@ -96,7 +96,7 @@
 
     //Check if accessGroup string was sent in
     if command.arguments.count == 1 {
-      keychain.accessGroup = command.arguments[0] as! String
+      keychain.accessGroup = (command.arguments[0] as! String)
     }
 
     keychain.clear()
