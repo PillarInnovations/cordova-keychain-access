@@ -193,16 +193,16 @@
         print(keyValue)
         pluginResult = CDVPluginResult(
           status: CDVCommandStatus_OK,
-          messageAs: result as! String
+          messageAs: keyValue as! String
         )
-        result
+        //result
       }
     } else {
       print("Error loading from Keychain: \(resultCodeLoad)")
       resultMessage = "Error loading from Keychain: \(resultCodeLoad)"
       pluginResult = CDVPluginResult(
         status: CDVCommandStatus_ERROR,
-        messageAs: resultMessage as! String
+        messageAs: resultMessage
       )
     }
 
