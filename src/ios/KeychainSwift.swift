@@ -168,8 +168,8 @@
       messageAs: resultMessage
     )
 
-    let itemKey = command.arguments[0]
-    let keychainAccessGroupName = command.arguments[1]
+    let itemKey = command.arguments[0] as! String
+    let keychainAccessGroupName = command.arguments[1] as! String
     let queryLoad: [String: AnyObject] = [
       kSecClass as String: kSecClassGenericPassword,
       kSecAttrAccount as String: itemKey as AnyObject,
