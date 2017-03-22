@@ -1,11 +1,10 @@
 @objc(PillarKeychainSwift) class PillarKeychainSwift : CDVPlugin {
+  @objc let keychain = KeychainSwift()
   @objc(set:)
   func set(command: CDVInvokedUrlCommand) {
     var pluginResult = CDVPluginResult(
       status: CDVCommandStatus_ERROR
     )
-
-    let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
     if command.arguments.count == 3 {
@@ -38,8 +37,6 @@
       status: CDVCommandStatus_ERROR
     )
 
-    let keychain = KeychainSwift()
-
     //Check if accessGroup string was sent in
     if command.arguments.count == 2 {
       print("Two arguments in get! Access group is: \(command.arguments[1])")
@@ -64,8 +61,6 @@
     var pluginResult = CDVPluginResult(
       status: CDVCommandStatus_ERROR
     )
-
-    let keychain = KeychainSwift()
 
     //Check if accessGroup string was sent in
     if command.arguments.count == 2 {
@@ -92,8 +87,6 @@
       status: CDVCommandStatus_ERROR
     )
 
-    let keychain = KeychainSwift()
-
     //Check if accessGroup string was sent in
     if command.arguments.count == 1 {
       keychain.accessGroup = (command.arguments[0] as! String)
@@ -115,11 +108,23 @@
 
   @objc(setRaw:)
   func setRaw(command: CDVInvokedUrlCommand) {
+    var result = "No result"
+
+    var pluginResult = CDVPluginResult(
+      status: CDVCommandStatus_ERROR,
+      messageAs: result
+    )
+
     let itemKey = command.arguments[1] as! String
     let itemValue = command.arguments[0] as! String
     let keychainAccessGroupName = command.arguments[2] as! String
     guard let valueData = itemValue.data(using: String.Encoding.utf8) else {
       print("Error saving text to Keychain")
+      result = "Error savings text to Keychain"
+      pluginResult = CDVPluginResult(
+        status: CDVCommandStatus_ERROR,
+        messageAs: result
+      )
       return
     }
 
@@ -135,11 +140,34 @@
 
     if resultCode != noErr {
       print("Error saving to Keychain: \(resultCode)")
+      result = "Error saving to Keychain: \(resultCode)"
+      pluginResult = CDVPluginResult(
+        status: CDVCommandStatus_ERROR,
+        messageAs: result
+      )
+    } else {
+      result = "Raw key set!"
+      pluginResult = CDVPluginResult(
+        status: CDVCommandStatus_OK,
+        messageAs: result
+      )
     }
+
+    self.commandDelegate!.send(
+      pluginResult,
+      callbackId: command.callbackId
+    )
   }
 
   @objc(getRaw:)
   func getRaw(command: CDVInvokedUrlCommand) {
+    var resultMessage = "No result"
+
+    var pluginResult = CDVPluginResult(
+      status: CDVCommandStatus_ERROR,
+      messageAs: resultMessage
+    )
+
     let itemKey = command.arguments[0]
     let keychainAccessGroupName = command.arguments[1]
     let queryLoad: [String: AnyObject] = [
@@ -163,9 +191,24 @@
 
         // Found successfully
         print(keyValue)
+        pluginResult = CDVPluginResult(
+          status: CDVCommandStatus_OK,
+          messageAs: result
+        )
+        result
       }
     } else {
       print("Error loading from Keychain: \(resultCodeLoad)")
+      result = "Error loading from Keychain: \(resultCodeLoad)"
+      pluginResult = CDVPluginResult(
+        status: CDVCommandStatus_ERROR,
+        messageAs: result
+      )
     }
+
+    self.commandDelegate!.send(
+      pluginResult,
+      callbackId: command.callbackId
+    )
   }
 }
